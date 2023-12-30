@@ -1,0 +1,39 @@
+{
+  "name": "starter-kit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-s -c dev watch",
+    "build": "npm-run-all -s clean -p build:*",
+    "watch": "run-p watch:*",
+    "watch:css": "onchange \"src/**/*.scss\" -- npm run dev:css",
+    "dev": "run-p dev:*",
+    "dev:css": "NODE_ENV=development run-s -c css:*",
+    "build:css": "NODE_ENV=production run-s -c css:*",
+    "css:stylelint": "stylelint \"src/**/*.scss\" --fix",
+    "css:sass": "sass src/assets/scss/site.scss htdocs/assets/css/site.css",
+    "css:postcss": "postcss htdocs/assets/css/site.css -o htdocs/assets/css/site.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.2",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.1.1",
+    "sass": "^1.69.5",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard-scss": "^12.0.0",
+    "stylelint-prettier": "^5.0.0",
+    "stylelint-scss": "^6.0.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "sass-mq": "^6.0.0"
+  }
+}
